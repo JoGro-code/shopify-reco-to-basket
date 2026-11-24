@@ -22,3 +22,13 @@ RVI Basic lets shoppers check for one approved, orderable replacement if their s
 Wird eine Schuhgröße ausverkauft, während sie noch im Warenkorb liegt, können Käufer mit RVI Basic nach einem freigegebenen, bestellbaren Ersatz suchen. Sie öffnen die genaue Variante in ihrem Markt und entscheiden selbst, ob sie diese hinzufügen. Gib das Paar in RVI frei, aktiviere den RVI-Produktverlauf auf beiden Produktseiten und füge **RVI-Ersatz im Warenkorb** zur Warenkorbvorlage eines Theme-Entwurfs hinzu.
 
 [RVI über Shopify installieren](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_readme) · [Warenkorbersatz ausprobieren](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=de&ref=github-dawn-cart#abc-cart) · [Eigenen Katalog und Stückkosten prüfen](https://recently-viewed-products.fly.dev/shopify-variant-audit?locale=de#audit-form-heading)
+
+## Measure profit from one stockout replacement
+
+RVI Basic can randomly show one approved, orderable replacement to half of eligible browsers opening the replacement check on the product page. Use one exact variant pair and one buyer country. Create the code in the Basic stockout worklist, then add it to the RVI block in Shopify’s theme editor. Verify that your analytics pixel receives the assignment and reconcile both groups with paid orders and refunds after the return window closes. [Shopify customer events](https://shopify.dev/docs/api/web-pixels-api/emitting-data)
+
+For example, if 80 paid orders in the control group leave USD 3,100 after costs and refunds, and 100 paid orders in the RVI group leave USD 2,850, the treatment contributes USD 250 less per 1,000 eligible visits when both groups have 1,000. These figures illustrate the calculation. [RVI Basic on Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=en&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_stockout_trial_readme)
+
+### Mehr Käufe und Deckungsbeitrag gemeinsam prüfen
+
+Teste in RVI Basic ein freigegebenes Variantenpaar für ein Käuferland. Die zufällige Zuteilung greift beim Öffnen der Ersatzprüfung auf der Produktseite. Erstelle den Code in der RVI-Arbeitsliste und füge ihn im Theme-Editor in den RVI-Block ein. Prüfe den Ereignisempfang in deinem Analyse-Pixel und gleiche nach Ablauf der Retourenfrist die Bestellungen und Erstattungen beider Gruppen ab. [RVI Basic auf Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_stockout_trial_readme)
