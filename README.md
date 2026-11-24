@@ -2,7 +2,7 @@
 
 This Dawn prototype reads the items already in the cart, requests Shopify product recommendations for each product, and displays up to four related products ranked by how often they appear.
 
-If a shoe size sells out after the shopper added it to the cart, see [the RVI cart block](#when-a-saved-size-sells-out).
+If a saved shoe size sells out while it is still in the cart, [try the exact-size replacement flow in a browser](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=en&ref=github-dawn-cart#abc-cart). The example shows when a shopper can keep the original size and open the approved replacement.
 
 ## Try it in a draft theme
 
@@ -15,10 +15,10 @@ If a shoe size sells out after the shopper added it to the cart, see [the RVI ca
 
 RVI Basic lets shoppers check for one approved, orderable replacement if their shoe size sells out while still in the cart. They open the exact variant in their market and decide whether to add it. Approve the pair in RVI, enable RVI product history on both product pages, and add **RVI cart replacement** to the cart template in a draft theme.
 
-[Install RVI from Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=en&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_readme) · [Try an approved size pair](https://recently-viewed-products.fly.dev/shopify-approved-footwear-demo?locale=en&ref=github)
+[Install RVI from Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=en&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_readme) · [Try the cart replacement flow](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=en&ref=github-dawn-cart#abc-cart) · [Audit stock and costs from your catalog](https://recently-viewed-products.fly.dev/shopify-variant-audit?locale=en#audit-form-heading)
 
 ### Auf Deutsch
 
 Wird eine Schuhgröße ausverkauft, während sie noch im Warenkorb liegt, können Käufer mit RVI Basic nach einem freigegebenen, bestellbaren Ersatz suchen. Sie öffnen die genaue Variante in ihrem Markt und entscheiden selbst, ob sie diese hinzufügen. Gib das Paar in RVI frei, aktiviere den RVI-Produktverlauf auf beiden Produktseiten und füge **RVI-Ersatz im Warenkorb** zur Warenkorbvorlage eines Theme-Entwurfs hinzu.
 
-[RVI über Shopify installieren](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_readme) · [Freigegebenes Größenpaar ausprobieren](https://recently-viewed-products.fly.dev/shopify-approved-footwear-demo?locale=de&ref=github)
+[RVI über Shopify installieren](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_readme) · [Warenkorbersatz ausprobieren](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=de&ref=github-dawn-cart#abc-cart) · [Eigenen Katalog und Stückkosten prüfen](https://recently-viewed-products.fly.dev/shopify-variant-audit?locale=de#audit-form-heading)
