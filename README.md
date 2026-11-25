@@ -23,6 +23,16 @@ Wird eine Schuhgröße ausverkauft, während sie noch im Warenkorb liegt, könne
 
 [RVI über Shopify installieren](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_readme) · [Warenkorbersatz ausprobieren](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=de&ref=github-dawn-cart#abc-cart) · [Eigenen Katalog und Stückkosten prüfen](https://recently-viewed-products.fly.dev/shopify-variant-audit?locale=de#audit-form-heading)
 
+## Compare two shoe sizes in the cart
+
+The optional **Compare cart sizes** block in RVI Basic shows the recommended foot length for each size using measurements you verify against your size guide.
+
+1. In Shopify, open **Settings → Metafields and metaobjects → Variants**. Create the Decimal metafield `custom.rvi_foot_length_cm` and enter the verified recommended foot length in centimeters on each test variant. [Shopify metafield setup](https://help.shopify.com/en/manual/custom-data/metafields/metafield-definitions/creating-custom-metafield-definitions)
+2. In the **Cart** template of an unpublished theme, add the **Compare cart sizes** app block and enter the exact **Size option name** used in your store, such as `Size`.
+3. In the storefront preview, add one unit each of two sizes of the same shoe product. Color and every other option must match. Open **Compare your two sizes**. Check both measurements and the product link. The shopper can keep both sizes in the cart.
+
+[View RVI Basic on Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=en&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_offer_pilot#adp-pricing)
+
 ## Preview one cart add-on with a minimum contribution
 
 In RVI Basic, open **Cart add-on test**. Start with one exact variant and up to three optional add-ons from Shopify's **Variants bought together** report. **Compare up to three cart add-ons** checks live Shopify prices and availability in the same country. Include shipping revenue you might lose, extra shipping costs, returns and the risk of losing existing purchases. Choose one candidate, then confirm its pair and costs in **Prepare one cart offer** to verify it again and generate a preview code. [See the worked contribution example](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=en&ref=github-dawn-cart#addon-contribution) · [Calculate the break-even return rate for a free shipping upsell](https://recently-viewed-products.fly.dev/shopify-free-shipping-upsell?locale=en&ref=github)
