@@ -23,6 +23,18 @@ Wird eine Schuhgröße ausverkauft, während sie noch im Warenkorb liegt, könne
 
 [RVI über Shopify installieren](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_readme) · [Warenkorbersatz ausprobieren](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=de&ref=github-dawn-cart#abc-cart) · [Eigenen Katalog und Stückkosten prüfen](https://recently-viewed-products.fly.dev/shopify-variant-audit?locale=de#audit-form-heading)
 
+## Preview one cart add-on with a minimum contribution
+
+In RVI Basic, open **Cart add-on test**. Start with two exact variants from Shopify's **Variants bought together** report. Confirm the pair, buyer country, currency and the maximum costs for the add-on. RVI checks the current Shopify prices and prepares a code when the estimated contribution meets your minimum.
+
+Add **Cart add-on preview** once to the Cart page of an unpublished theme and paste the code. Preview a cart containing one unit of the first variant without discounts. RVI rechecks the cart, exact price and stock before adding one unit of the second variant on request. The preview is for setup checks. Measuring the effect on profit requires a separate merchant test with paid orders and settled returns.
+
+[View RVI Basic on Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=en&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_offer_pilot#adp-pricing) · [Shopify's variants bought together report](https://help.shopify.com/en/manual/reports-and-analytics/shopify-reports/report-types/default-reports/order-reports#items-bought-together)
+
+### Zusatzangebot im Theme-Entwurf prüfen
+
+Öffne in RVI Basic **Zusatzangebot im Warenkorb testen**. Bestätige zwei genaue Varianten, das Käuferland und die Kostenobergrenzen. RVI prüft die Preise und erstellt einen Vorschaucode, wenn der geschätzte Beitrag deinen Mindestwert erreicht. Füge **Zusatzangebot testen** im unveröffentlichten Theme einmal zur Warenkorbseite hinzu. Teste dort mit einem Stück der ersten Variante und ohne Rabatt. [RVI Basic auf Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_offer_pilot#adp-pricing)
+
 ## Measure profit from one stockout replacement
 
 RVI Basic can randomly show one approved, orderable replacement to half of eligible browsers opening the replacement check on the product page. Use one exact variant pair and one buyer country. Create the code in the Basic stockout worklist, then add it to the RVI block in Shopify’s theme editor. Verify that your analytics pixel receives the assignment and reconcile both groups with paid orders and refunds after the return window closes. [Shopify customer events](https://shopify.dev/docs/api/web-pixels-api/emitting-data)
