@@ -25,7 +25,7 @@ Wird eine Schuhgröße ausverkauft, während sie noch im Warenkorb liegt, könne
 
 ## Preview one cart add-on with a minimum contribution
 
-In RVI Basic, open **Cart add-on test**. Start with two exact variants from Shopify's **Variants bought together** report. Confirm the pair, buyer country, currency and the maximum costs for the add-on. RVI checks the current Shopify prices and prepares a code when the estimated contribution meets your minimum.
+In RVI Basic, open **Cart add-on test**. Start with one exact variant and up to three optional add-ons from Shopify's **Variants bought together** report. **Compare up to three cart add-ons** checks live Shopify prices and availability in the same country. Include shipping revenue you might lose, extra shipping costs, returns and the risk of losing existing purchases. Choose one candidate, then confirm its pair and costs in **Prepare one cart offer** to verify it again and generate a preview code. [See the worked contribution example](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=en&ref=github-dawn-cart#addon-contribution)
 
 Add **Cart add-on preview** once to the Cart page of an unpublished theme and paste the code. In the signed-in Shopify Admin, open **Online Store → Themes** and choose **Preview** from the unpublished theme's actions. Keep your shop's primary domain and the selected buyer country. Use a cart containing one unit of the first variant without discounts. RVI rechecks the cart, exact price and stock before adding one unit of the second variant on request. The preview is for setup checks. Measuring the effect on profit requires a separate merchant test with paid orders and settled returns.
 
@@ -33,7 +33,9 @@ Add **Cart add-on preview** once to the Cart page of an unpublished theme and pa
 
 ### Zusatzangebot im Theme-Entwurf prüfen
 
-Öffne in RVI Basic **Zusatzangebot im Warenkorb testen**. Bestätige zwei genaue Varianten, das Käuferland und die Kostenobergrenzen. RVI prüft die Preise und erstellt einen Vorschaucode, wenn der geschätzte Beitrag deinen Mindestwert erreicht. Füge **Zusatzangebot testen** im unveröffentlichten Theme einmal zur Warenkorbseite hinzu. Öffne als angemeldeter Händler unter **Onlineshop → Themes** die **Vorschau** des Theme-Entwurfs. Bleibe auf deiner Shop-Hauptdomain und wähle das Käuferland. Teste mit einem Stück der ersten Variante und ohne Rabatt. [RVI Basic auf Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_offer_pilot#adp-pricing)
+Öffne in RVI Basic **Zusatzangebot im Warenkorb testen**. Prüfe bis zu drei genaue Zusatzartikel für eine Variante, ein Lieferland und dieselben Versandregeln. RVI berücksichtigt mögliche entfallene Käufe, Zusatzversand und Retouren. Wähle einen Kandidaten und bestätige das genaue Paar und seine Kosten erneut, um den Vorschaucode zu erzeugen. [Rechenbeispiel zum Deckungsbeitrag](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=de&ref=github-dawn-cart#addon-contribution)
+
+Füge **Zusatzangebot testen** im unveröffentlichten Theme einmal zur Warenkorbseite hinzu. Öffne als angemeldeter Händler unter **Onlineshop → Themes** die **Vorschau** des Theme-Entwurfs. Bleibe auf deiner Shop-Hauptdomain und wähle das Käuferland. Teste mit einem Stück der ersten Variante und ohne Rabatt. [RVI Basic auf Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_offer_pilot#adp-pricing)
 
 ## Measure profit from one stockout replacement
 
