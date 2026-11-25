@@ -25,15 +25,16 @@ Wird eine Schuhgröße ausverkauft, während sie noch im Warenkorb liegt, könne
 
 ## Compare two shoe sizes in the cart
 
-The optional **Compare cart sizes** block in RVI Basic shows the manufacturer’s recommended foot lengths for two sizes of the same shoe in the cart.
+The optional **Compare cart sizes** block shows the manufacturer’s recommended foot lengths for two sizes of the same shoe in the cart.
 
-1. In RVI Basic, open **Setup → Import a shoe size chart**. Choose the Shopify product and its exact size option. Paste the manufacturer’s size and recommended foot-length columns with their headings and unit, or upload a UTF-8 `.txt` or `.tsv` file. Select **Check chart**, review the matches, then confirm and save.
-2. In the **Cart** template of an unpublished theme, add the **Compare cart sizes** app block and enter the exact **Size option name** used in your store, such as `Size`.
-3. In the storefront preview, add one unit each of two sizes of the same shoe product. Color and every other option must match. Open **Compare your two sizes**. Check both measurements and the product link. The shopper can keep both sizes in the cart.
+1. [Check your shoe size chart for free before installing](https://recently-viewed-products.fly.dev/shopify-footwear-fit-check?locale=en&ref=github-dawn-cart#foot-length-audit). Paste the size and recommended foot-length columns with their headings and unit. Review the result and download the checked chart.
+2. Continue to the free Shopify installation from the check. In RVI, open **Setup → Check a shoe size chart**, load a published product from your shop, select its size option and open the chart file. Free checks the match against the product’s sizes. Basic lets you confirm and save those measurements for the cart comparison.
+3. In the **Cart** template of an unpublished theme, add the **Compare cart sizes** app block and enter the exact **Size option name** used in your store, such as `Size`.
+4. In the storefront preview, add one unit each of two sizes of the same shoe product. Color and every other option must match. Open **Compare your two sizes**. Check both measurements and the product link. The shopper can keep both sizes in the cart.
 
 If you already use the variant Decimal metafield `custom.rvi_foot_length_cm`, you can keep using verified single foot lengths in centimeters. [Shopify metafield setup](https://help.shopify.com/en/manual/custom-data/metafields/metafield-definitions/creating-custom-metafield-definitions)
 
-[Check a shoe size chart without installing RVI](https://recently-viewed-products.fly.dev/shopify-footwear-fit-check?locale=en#foot-length-audit) · [View RVI Basic on Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=en&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_offer_pilot#adp-pricing)
+[View RVI Basic on Shopify](https://recently-viewed-products.fly.dev/go/shopify/en-foot-length-audit-github-dawn-cart)
 
 ## Preview one cart add-on with a minimum contribution
 
