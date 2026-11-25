@@ -25,13 +25,15 @@ Wird eine Schuhgröße ausverkauft, während sie noch im Warenkorb liegt, könne
 
 ## Compare two shoe sizes in the cart
 
-The optional **Compare cart sizes** block in RVI Basic shows the recommended foot length for each size using measurements you verify against your size guide.
+The optional **Compare cart sizes** block in RVI Basic shows the manufacturer’s recommended foot lengths for two sizes of the same shoe in the cart.
 
-1. In Shopify, open **Settings → Metafields and metaobjects → Variants**. Create the Decimal metafield `custom.rvi_foot_length_cm` and enter the verified recommended foot length in centimeters on each test variant. [Shopify metafield setup](https://help.shopify.com/en/manual/custom-data/metafields/metafield-definitions/creating-custom-metafield-definitions)
+1. In RVI Basic, open **Setup → Import a shoe size chart**. Choose the Shopify product and its exact size option. Paste the manufacturer’s size and recommended foot-length columns with their headings and unit, or upload a UTF-8 `.txt` or `.tsv` file. Select **Check chart**, review the matches, then confirm and save.
 2. In the **Cart** template of an unpublished theme, add the **Compare cart sizes** app block and enter the exact **Size option name** used in your store, such as `Size`.
 3. In the storefront preview, add one unit each of two sizes of the same shoe product. Color and every other option must match. Open **Compare your two sizes**. Check both measurements and the product link. The shopper can keep both sizes in the cart.
 
-[View RVI Basic on Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=en&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_offer_pilot#adp-pricing)
+If you already use the variant Decimal metafield `custom.rvi_foot_length_cm`, you can keep using verified single foot lengths in centimeters. [Shopify metafield setup](https://help.shopify.com/en/manual/custom-data/metafields/metafield-definitions/creating-custom-metafield-definitions)
+
+[Check a shoe size chart without installing RVI](https://recently-viewed-products.fly.dev/shopify-footwear-fit-check?locale=en#foot-length-audit) · [View RVI Basic on Shopify](https://apps.shopify.com/recently-viewed-products-7?locale=en&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_offer_pilot#adp-pricing)
 
 ## Preview one cart add-on with a minimum contribution
 
