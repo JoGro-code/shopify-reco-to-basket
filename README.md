@@ -23,6 +23,10 @@ Wird eine Schuhgröße ausverkauft, während sie noch im Warenkorb liegt, könne
 
 [RVI über Shopify installieren](https://apps.shopify.com/recently-viewed-products-7?locale=de&utm_source=github&utm_medium=referral&utm_campaign=rvi_relaunch_202611&utm_content=dawn_cart_readme) · [Warenkorbersatz ausprobieren](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=de&ref=github-dawn-cart#abc-cart) · [Eigenen Katalog und Stückkosten prüfen](https://recently-viewed-products.fly.dev/shopify-variant-audit?locale=de#audit-form-heading)
 
+### En français
+
+[Rechercher un remplacement dans la même pointure](https://recently-viewed-products.fly.dev/shopify-footwear-fit-check?locale=fr&ref=github&via=approved-demo#footwear-pair). Collez le lien de la fiche Shopify d’origine, choisissez le pays de livraison et la pointure épuisée, puis cherchez les variantes disponibles dans ce marché. Vérifiez la variante et le chaussant avant de préparer la paire pour le bloc de remplacement du panier dans RVI Basic. Vous pouvez faire cette vérification avant d’installer l’application.
+
 ## Compare two shoe sizes in the cart
 
 The optional **Compare cart sizes** block shows the manufacturer’s recommended foot lengths for two sizes of the same shoe in the cart.
