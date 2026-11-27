@@ -2,6 +2,8 @@
 
 This Dawn prototype reads the items already in the cart, requests Shopify product recommendations for each product, and displays up to four related products ranked by how often they appear.
 
+[Check a shoe size chart for free](https://recently-viewed-products.fly.dev/shopify-footwear-fit-check?locale=en&ref=github-dawn-cart#foot-length-audit). Preview two sizes using the manufacturer’s recommended foot lengths. RVI Free checks the chart against your own published Shopify sizes. Showing the comparison to shoppers in the cart uses RVI Basic.
+
 If a saved shoe size sells out while it is still in the cart, [try the exact-size replacement flow in a browser](https://recently-viewed-products.fly.dev/cart-recovery-tutorial?locale=en&ref=github-dawn-cart#abc-cart). The example shows when a shopper can keep the original size and open the approved replacement.
 
 ## Try it in a draft theme
