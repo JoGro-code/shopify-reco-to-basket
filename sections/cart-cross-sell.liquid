@@ -1,3 +1,20 @@
+{%- if recommendations.performed? -%}
+  <ul data-cross-sell-results="{{ section.id | escape }}">
+    {%- for recommended_product in recommendations.products -%}
+      <li class="grid__item" data-cross-sell-product="{{ recommended_product.id }}">
+        {% render 'card-product',
+          card_product: recommended_product,
+          media_aspect_ratio: section.settings.image_ratio,
+          image_shape: section.settings.image_shape,
+          show_secondary_image: section.settings.show_secondary_image,
+          show_vendor: section.settings.show_vendor,
+          show_rating: section.settings.show_rating,
+          section_id: section.id
+        %}
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- else -%}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
@@ -21,22 +38,23 @@
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <product-recommendations
+  <div
     class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}"
+    data-cross-sell-section="{{ section.id | escape }}"
+    data-cart-url="{{ routes.cart_url | append: '.js' | escape }}"
+    data-recommendations-url="{{ routes.product_recommendations_url | escape }}"
   >
-      <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
-        Passende Produkte zu deinem Warenkorb
-      </h2>
-      <div id="cross-sell-products" data-section-id="{{ section.id }}">
-        <!-- Cross-sell products will be injected here by JavaScript -->
-      </div>
-  </product-recommendations>
+    <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
+      Passende Produkte zu deinem Warenkorb
+    </h2>
+    <ul class="grid product-grid grid--4-col-desktop grid--2-col-tablet-down" role="list" data-cross-sell-list hidden></ul>
+  </div>
   {% if section.settings.image_shape == 'arch' %}
     {% render 'mask-arch' %}
   {% endif %}
 </div>
-<script src="{{ 'cross-sell.js' | asset_url }}"></script>
+<script src="{{ 'cross-sell.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.cart-cross-sell.name",

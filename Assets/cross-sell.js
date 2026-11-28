@@ -1,136 +1,90 @@
-// assets/cross-sell.js
+(() => {
+  const sectionSelector = "[data-cross-sell-section]";
+  const productIdPattern = /^[1-9][0-9]*$/;
+  const sectionIdPattern = /^[a-zA-Z0-9_-]+$/;
+  const requestOptions = { credentials: "same-origin", redirect: "error" };
 
-document.addEventListener("DOMContentLoaded", function () {
-  //console.log("DOM fully loaded and parsed"); // Debugging-Ausgabe
-
-  const crossSellContainer = document.getElementById("cross-sell-products");
-  if (!crossSellContainer) {
-    console.error("Cross-sell container not found.");
-    return;
+  function readLocalRoute(path, suffix) {
+    if (!path?.startsWith("/") || path.startsWith("//")) return null;
+    const route = new URL(path, window.location.origin);
+    return route.origin === window.location.origin && route.pathname.endsWith(suffix) &&
+      !route.search && !route.hash ? route : null;
   }
 
-  const fullSectionId = crossSellContainer.getAttribute("data-section-id");
-  if (!fullSectionId) {
-    console.error("Section ID not found.");
-    return;
-  }
-
-  const sectionId = extractSectionId(fullSectionId);
-  console.log("Section ID:", sectionId); // Debugging-Ausgabe
-
-  fetch("/cart.js")
-    .then((response) => response.json())
-    .then((cartData) => {
-      console.log("Cart Data:", cartData); // Debugging-Ausgabe
-      const productIds = cartData.items.map((item) => item.product_id);
-      console.log("Product IDs:", productIds); // Debugging-Ausgabe
-      const crossSellPromises = productIds.map((productId) =>
-        fetchCrossSellForProduct(productId, sectionId)
-      );
-      Promise.all(crossSellPromises)
-        .then((crossSellHtmlArray) => {
-          console.log("Cross Sell HTML Array:", crossSellHtmlArray); // Debugging-Ausgabe
-          // Using setTimeout to delay the processing and ensure all data is collected
-          setTimeout(() => {
-            const totalCrossSellHtmlArray = crossSellHtmlArray.flat();
-            const orderedProducts = flattenAndCount(totalCrossSellHtmlArray);
-            console.log("Ordered Products:", orderedProducts.slice(0, 4)); // Debugging-Ausgabe
-            displayCrossSellProducts(orderedProducts.slice(0, 4));
-          }, 1000); // Delay of 1 seconds
-        })
-        .catch((error) => {
-          console.error("Error in fetching cross-sell products:", error);
-        });
-    })
-    .catch((error) => {
-      console.error("Error in fetching cart data:", error);
+  async function fetchCards(endpoint, sectionId, productId) {
+    const route = new URL(endpoint);
+    route.search = new URLSearchParams({
+      section_id: sectionId,
+      product_id: productId,
+      limit: "10",
+      intent: "related",
     });
-});
 
-function extractSectionId(fullSectionId) {
-  const match = fullSectionId.match(/template--(\d+)/);
-  return match ? match[1] : null;
-}
-
-function fetchCrossSellForProduct(productId, sectionId) {
-  const url = `/recommendations/products?section_id=template--22515674349893__related-products&product_id=${productId}&limit=10`;
-  console.log("Fetching cross-sell products from URL:", url); // Debugging-Ausgabe
-  return fetch(url)
-    .then((response) => response.text())
-    .then((htmlText) => {
-      console.log("Cross Sell Response Text for Product:", productId, htmlText); // Debugging-Ausgabe
-      return htmlText;
-    })
-    .catch((error) => {
-      console.error(
-        `Error fetching cross-sell products for product ID ${productId}:`,
-        error
-      );
-    });
-}
-
-function flattenAndCount(crossSellHtmlArray) {
-  const productCount = {};
-  const parser = new DOMParser();
-
-  crossSellHtmlArray.forEach((htmlText) => {
-    const doc = parser.parseFromString(htmlText, "text/html");
-    const items = doc.querySelectorAll(".grid__item");
-
-    items.forEach((item) => {
-      const itemHtml = item.outerHTML;
-      if (productCount[itemHtml]) {
-        productCount[itemHtml]++;
-      } else {
-        productCount[itemHtml] = 1;
-      }
-    });
-  });
-
-  const orderedProducts = Object.entries(productCount)
-    .sort((a, b) => b[1] - a[1])
-    .map((entry) => entry[0]);
-
-  console.log("Ordered Products by Frequency:", orderedProducts); // Debugging-Ausgabe
-
-  // Remove duplicates to keep only unique items
-  const uniqueProducts = [...new Set(orderedProducts)];
-  console.log("Unique Ordered Products:", uniqueProducts); // Debugging-Ausgabe
-
-  return uniqueProducts;
-}
-
-function displayCrossSellProducts(productHtmlArray) {
-  const container = document.getElementById("cross-sell-products");
-  if (!container) return;
-
-  console.log("Displaying Products:", productHtmlArray); // Debugging-Ausgabe
-
-  container.innerHTML = ""; // Clear existing content
-
-  // Create the <ul> element with the specified classes
-  const ulElement = document.createElement("ul");
-  ulElement.className =
-    "grid product-grid grid--4-col-desktop grid--2-col-tablet-down";
-  ulElement.setAttribute("role", "list");
-
-  // Process each product HTML to ensure only the inner <li> is used
-  productHtmlArray.forEach((productHtml) => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = productHtml.trim();
-
-    // Find the inner <li class="grid__item">
-    const innerLi = tempDiv.querySelector("li.grid__item");
-    if (innerLi) {
-      ulElement.appendChild(innerLi);
-    } else {
-      console.error(
-        'Inner <li class="grid__item"> not found in product HTML:',
-        productHtml
-      );
+    try {
+      const response = await fetch(route, requestOptions);
+      if (!response.ok) return [];
+      const document = new DOMParser().parseFromString(await response.text(), "text/html");
+      const results = document.querySelectorAll("[data-cross-sell-results]");
+      if (results.length !== 1 || results[0].dataset.crossSellResults !== sectionId) return [];
+      return Array.from(results[0].children);
+    } catch {
+      return [];
     }
-  });
+  }
 
-  // Append the <ul> to the container
-  container.appendChild(ulElement);
-}
+  async function loadCrossSell(section) {
+    const { crossSellSection: sectionId, cartUrl, recommendationsUrl } = section.dataset;
+    const grid = section.querySelector("[data-cross-sell-list]");
+    if (!sectionIdPattern.test(sectionId || "") || !grid || section.dataset.crossSellInitialized) return;
+    section.dataset.crossSellInitialized = "true";
+
+    try {
+      const cartRoute = readLocalRoute(cartUrl, "/cart.js");
+      const recommendationsRoute = readLocalRoute(recommendationsUrl, "/recommendations/products");
+      if (!cartRoute || !recommendationsRoute) return;
+      const response = await fetch(cartRoute, requestOptions);
+      if (!response.ok) return;
+      const cart = await response.json();
+      if (!Array.isArray(cart.items)) return;
+      const productIds = [...new Set(cart.items.map(({ product_id }) => String(product_id))
+        .filter((id) => productIdPattern.test(id)))];
+
+      const responses = await Promise.all(productIds.map((id) => fetchCards(recommendationsRoute, sectionId, id)));
+      const rankedCards = new Map();
+      for (const cards of responses) {
+        const seen = new Set();
+        for (const card of cards) {
+          if (card.tagName !== "LI") continue;
+          const id = card.dataset.crossSellProduct;
+          if (!productIdPattern.test(id || "") || seen.has(id)) continue;
+          seen.add(id);
+          const result = rankedCards.get(id) || { card, count: 0 };
+          result.count += 1;
+          rankedCards.set(id, result);
+        }
+      }
+
+      const selected = [...rankedCards.values()].sort((left, right) => right.count - left.count)
+        .slice(0, 4).map(({ card }) => card);
+      if (section.isConnected) {
+        grid.replaceChildren(...selected);
+        grid.hidden = selected.length === 0;
+      }
+    } catch {
+      // Recommendations are optional. Leave the cart and checkout usable.
+    }
+  }
+
+  function initialize(root) {
+    if (root.matches?.(sectionSelector)) void loadCrossSell(root);
+    for (const section of root.querySelectorAll(sectionSelector)) void loadCrossSell(section);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => initialize(document), { once: true });
+  } else {
+    initialize(document);
+  }
+
+  document.addEventListener("shopify:section:load", (event) => initialize(event.target));
+})();

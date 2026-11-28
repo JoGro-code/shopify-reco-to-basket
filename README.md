@@ -10,8 +10,7 @@ If a saved shoe size sells out while it is still in the cart, [try the exact-siz
 
 1. Duplicate your Dawn theme. Copy [cross-sell.js](Assets/cross-sell.js) into the draft theme's `assets` folder and [cart-cross-sell.liquid](sections/cart-cross-sell.liquid) into `sections`.
 2. Use the [cart template example](templates/cart.json) to add the `cart-cross-sell` section to your existing cart template. Keep your cart's current sections and settings.
-3. Update the hard-coded recommendation section ID in `cross-sell.js` to the renderer used by your theme. Use locale-aware Shopify URLs and remove the cart-response debug logging before testing with real shoppers. [Shopify Product Recommendations API](https://shopify.dev/docs/api/ajax/reference/product-recommendations)
-4. Preview the draft with an empty cart and with multiple products. Check that suggestions load and that quantity updates and checkout still work.
+3. Preview the draft with an empty cart and with multiple products. Check that suggestions load when Shopify has related products, and that quantity updates and checkout still work. Repeat in each language you sell in. The section supplies its own ID and localized Shopify routes. [Shopify Product Recommendations API](https://shopify.dev/docs/api/ajax/reference/product-recommendations)
 
 ## When a saved size sells out
 
